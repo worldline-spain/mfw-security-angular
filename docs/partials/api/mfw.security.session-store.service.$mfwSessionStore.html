@@ -1,0 +1,52 @@
+<a href="https://github.com/worldline-spain/mfw-security-angular/edit/master/src/mfw-security-session.store.js" class="improve-docs"><i class="icon-edit"> </i>Improve this doc</a><a href="https://github.com/worldline-spain/mfw-security-angular/blob/5f8f641/src/mfw-security-session.store.js#L163" class="view-source"><i class="icon-eye-open"> </i>View source</a><h1><code ng:non-bindable="">$mfwSessionStore</code>
+<div><span class="hint">service in module <code ng:non-bindable="">mfw.security.session-store</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="mfw-security-session-store-service-page mfw-security-session-store-service--mfwsessionstore-page"><p>Session Store that notifies session changes: login and logout.</p>
+<p>It handles the following flux actions:</p>
+<ul>
+<li><a href="#/api/mfw.security.session-store.constant:$mfwSessionEventConstant#login"><code>$mfwSessionEventConstant.LOGIN</code></a>:
+automatically fires <a href="#/api/mfw.security.session-store.service:$mfwSessionStore#mfw:session.login"><code>mfw:Session.login</code></a> event.</li>
+<li><a href="#/api/mfw.security.session-store.constant:$mfwSessionEventConstant#logout"><code>$mfwSessionEventConstant.LOGOUT</code></a>:
+automatically fires <a href="#/api/mfw.security.session-store.service:$mfwSessionStore#mfw:session.logout"><code>mfw:Session.logout</code></a> event.</li>
+<li><a href="#/api/mfw.security.session-store.constant:$mfwSessionEventConstant#update_credentials"><code>$mfwSessionEventConstant.UPDATE_CREDENTIALS</code></a>:
+automatically fires <a href="#/api/mfw.security.session-store.service:$mfwSessionStore#mfw:session.logout"><code>mfw:Session.credentials-update</code></a> event.</li>
+</ul>
+</div></div>
+<div class="member event"><h2 id="events">Events</h2>
+<ul class="events"><li><h3 id="events_mfwsessioncredentials-update">mfw:Session.credentials-update</h3>
+<div class="mfwsessioncredentials-update"><div class="mfw-security-session-store-service-page mfw-security-session-store-service--mfwsessionstore-mfw-session-credentials-update-page"><p>Event triggered when user user credentials are updated.</p>
+</div><div class="inline"><h4 id="events_mfwsessioncredentials-update_type">Type:</h4>
+<div class="type">broadcast</div>
+</div>
+<div class="inline"><h4 id="events_mfwsessioncredentials-update_target">Target:</h4>
+<div class="target">$mfwSessionStore</div>
+</div>
+</div>
+</li>
+<li><h3 id="events_mfwsessionlogin">mfw:Session.login</h3>
+<div class="mfwsessionlogin"><div class="mfw-security-session-store-service-page mfw-security-session-store-service--mfwsessionstore-mfw-session-login-page"><p>Event triggered when a user logs in.</p>
+</div><div class="inline"><h4 id="events_mfwsessionlogin_type">Type:</h4>
+<div class="type">broadcast</div>
+</div>
+<div class="inline"><h4 id="events_mfwsessionlogin_target">Target:</h4>
+<div class="target">$mfwSessionStore</div>
+</div>
+<h5 id="events_mfwsessionlogin_target_parameters">Parameters</h5><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>userInfo</td><td><a href="" class="label type-hint type-hint-userinfo">UserInfo</a></td><td><div class="mfw-security-session-store-service-page mfw-security-session-store-service--mfwsessionstore-mfw-session-login-page"><p>Current user info.</p>
+</div></td></tr></tbody></table></div>
+</li>
+<li><h3 id="events_mfwsessionlogout">mfw:Session.logout</h3>
+<div class="mfwsessionlogout"><div class="mfw-security-session-store-service-page mfw-security-session-store-service--mfwsessionstore-mfw-session-logout-page"><p>Event triggered when a user logs out.</p>
+</div><div class="inline"><h4 id="events_mfwsessionlogout_type">Type:</h4>
+<div class="type">broadcast</div>
+</div>
+<div class="inline"><h4 id="events_mfwsessionlogout_target">Target:</h4>
+<div class="target">$mfwSessionStore</div>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>

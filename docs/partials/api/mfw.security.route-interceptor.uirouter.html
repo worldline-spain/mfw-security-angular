@@ -1,0 +1,102 @@
+<a href="https://github.com/worldline-spain/mfw-security-angular/edit/master/src/mfw-security-route-interceptor-uirouter.service.js" class="improve-docs"><i class="icon-edit"> </i>Improve this doc</a><a href="https://github.com/worldline-spain/mfw-security-angular/blob/5f8f641/src/mfw-security-route-interceptor-uirouter.service.js#L121" class="view-source"><i class="icon-eye-open"> </i>View source</a><h1><code ng:non-bindable=""></code>
+<div><span class="hint"></span>
+</div>
+</h1>
+<div><h2 id="dependencies">Dependencies</h2>
+<ul class="dependencies"><li><code ng:non-bindable=""><a href="#/api/mfw.security">security</a></code>
+</li>
+<li><code ng:non-bindable=""><a href="#/api/ui.router">router</a></code>
+</li>
+</ul>
+<div class="mfw-security-route-interceptor-uirouter-page"><h2 id="description">Description</h2>
+<p>Provided implementation is based on UI Router.</p>
+<ul>
+<li>Configure your states with required credentials (from your own role list) and the route interceptor will
+handle them and allow or deny access to them.</li>
+<li>Configure your login state to be addressed to when no credentials are found.</li>
+</ul>
+<h2 id="configuration">Configuration</h2>
+<p>Update settings in <a href="#/api/mfw.security.route-interceptor.uirouter.constant:$mfwSecurityRouteInterceptorConfig"><code>$mfwSecurityRouteInterceptorConfig</code></a> constant object.</p>
+<h3 id="configuration_state-definitions">State definitions</h3>
+<p>In all your states you can define a <code>data</code> object containing the security-related settings. Here&#39;s an example:</p>
+<h4 id="configuration_state-definitions_login-page">Login page</h4>
+<p>The state implementing login form can be defined in different ways:</p>
+<ul>
+<li>Settings: via the <a href="#/api/mfw.security.route-interceptor.uirouter.constant:$mfwSecurityRouteInterceptorConfig#loginstate"><code>$mfwSecurityRouteInterceptorConfig.loginState</code></a> setting.</li>
+<li>State configuration: define a property named <code>login</code> with <code>true</code> value:<pre><code class="lang-js">  $stateProvider
+    .state(&#39;login&#39;, {
+      url: &#39;/login&#39;,
+      // ...
+      data: {login: true}
+    });
+</code></pre>
+</li>
+</ul>
+<p>A state configured with <code>login: true</code> will override the state name configured via the
+<a href="#/api/mfw.security.route-interceptor.uirouter.constant:$mfwSecurityRouteInterceptorConfig#loginstate"><code>$mfwSecurityRouteInterceptorConfig.loginState</code></a>
+setting.</p>
+<h4 id="configuration_state-definitions_public-states">Public states</h4>
+<p>By default all states are public, see
+<a href="#/api/mfw.security.route-interceptor.uirouter.constant:$mfwSecurityRouteInterceptorConfig#publicbydefault"><code>$mfwSecurityRouteInterceptorConfig.publicByDefault</code></a>
+setting.</p>
+<p>A specific state can be configured as public or restricted via the <code>public</code> property.</p>
+<pre><code class="lang-js">    $stateProvider
+      .state(&#39;public&#39;, {
+        url: &#39;/public&#39;,
+        // ...
+        data: {public: true}
+      })
+      .state(&#39;restricted&#39;, {
+        url: &#39;/restricted&#39;,
+        // ...
+        data: {public: false}
+      });
+</code></pre>
+<h4 id="configuration_state-definitions_role-restricted-states">Role restricted states</h4>
+<p>A non public state can be configured to require specific user roles. This can be achieved via the <code>permissions</code> setting.</p>
+<p>The <code>permissions</code> setting can be configured in different ways:</p>
+<ul>
+<li>String: user must have a specific role.</li>
+<li>String[]: user must have <em>at least</em> one of the specified roles.</li>
+<li>Object: specify explicitly if user must have <em>all</em> or <em>any</em> of the specified roles:<ul>
+<li><code>all</code>: single role or a list of user roles. User must have all of them.</li>
+<li><code>any</code>: single role or a list of user roles. User must have at least one of them.<blockquote>
+<p>Specify <code>all</code> or <code>any</code>, but not both.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<p>If a role name starts with <code>!</code> will be handled as <em>must not have role XXX</em>.</p>
+<pre><code class="lang-js">    $stateProvider
+      // Only &#39;admin&#39; users
+      .state(&#39;admin&#39;, {
+        url: &#39;/admin&#39;,
+        // ...
+        data: {
+          public: false,
+          permissions: &#39;admin&#39;
+        }
+      })
+      // Only &#39;admin&#39; and &#39;manager&#39; users
+      .state(&#39;manager&#39;, {
+        url: &#39;/manager&#39;,
+        // ...
+        data: {
+          public: false,
+          permissions: [&#39;admin&#39;, &#39;manager&#39;]
+        }
+      })
+      // Only &#39;admin&#39; and &#39;manager&#39; users without the &#39;developer&#39; role
+      .state(&#39;secret&#39;, {
+        url: &#39;/secret&#39;,
+        // ...
+        data: {
+          public: false,
+          permissions: {
+            any: [&#39;!developer&#39;, &#39;admin&#39;, &#39;manager&#39;]
+          }
+        }
+      });
+</code></pre>
+</div></div>
