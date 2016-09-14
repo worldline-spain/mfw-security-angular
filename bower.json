@@ -8,7 +8,7 @@
   "license": "Apache-2.0",
   "private": true,
   "main": [
-    "dist/mfw-security.min.js"
+    "dist/mfw-security.service.js"
   ],
   "homepage": "https://github.com/worldline-spain/mfw-security-angular",
   "repository": {

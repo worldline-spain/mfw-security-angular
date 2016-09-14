@@ -35,13 +35,7 @@ Provided implementation is based on Restangular.
 Use repository URL and version tag until module is published in a Bower registry.
 
 ```shell
-$ bower install --save git+https://vcs1.tempos21.com/scm/git/worldline_mfw_angular_security#<version-tag>
-```
-
-*Example:*
-
-```shell
-$ bower install --save git+https://vcs1.tempos21.com/scm/git/worldline_mfw_angular_security#develop
+$ bower install --save mfw-security-angular
 ```
 
 
