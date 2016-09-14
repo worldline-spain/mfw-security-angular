@@ -2,11 +2,11 @@
   "name": "mfw-security-angular",
   "description": "MFW Security module for AngularJS apps",
   "authors": [
+    "Jordi Escudero Subirana <jordi.escudero@worldline.com> (https://github.com/jordiescudero)",
     "Juan Belmonte Rodríguez <juan.belmonte@worldline.com> (https://github.com/jbelmonte)",
     "Julián Torres Cárdenas <julian.torres@worldline.com> (https://github.com/julkian)"
   ],
   "license": "Apache-2.0",
-  "private": true,
   "main": [
     "dist/mfw-security.service.js"
   ],

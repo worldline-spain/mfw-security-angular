@@ -7,7 +7,7 @@ This AngularJS module provides a security layer to applications as part of **Mob
 
 ### Route interceptor
 
-Provided implementation is based on UI Router.
+Provided implementation is based on [UI Router](https://github.com/angular-ui/ui-router).
 
 * Configure your states with required credentials (from your own role list) and the route interceptor will
 handle them and allow or deny access to them.
@@ -16,7 +16,7 @@ handle them and allow or deny access to them.
 
 ### HTTP requests interceptor
 
-Provided implementation is based on Restangular.
+Provided implementation is based on [Restangular](https://github.com/mgonto/restangular).
 
 * Configure all your Restangular configurations to be updated with proper credentials when user logs in or logs out.
 * Handle error responses to broadcast a logout when `Unauthorized` response (HTTP status code 401) is received.
@@ -51,7 +51,9 @@ Once dependency has been downloaded, configure your application module(s) to req
 
 * `mfw.security` module: `$mfwSecurity` service and directives.
 * `mfw.security.storage.cookies` module: store credentials in cookies (depends on `ngCookies`).
+* `mfw.security.storage.localstorage` module: store credentials in `localStorage`.
 * `mfw.security.user-parser.jwt` module: parse JSON Web Tokens (JWT) after a successful login to a RESTful endpoint (depends on `angular-jwt`).
+* `mfw.security.user-parser.identity` module: dummy parser that performs the identity logic: returns what it receives to parse.
 * `mfw.security.route-interceptor.uirouter` module (optional): configure `ui.router` states for required credentials (depends on `ui.router`).
 * `mfw.security.http-handler.restangular` module (optional): configure `Restangular` with authorization HTTP headers and error interceptors (depends on `restangular`).
 
