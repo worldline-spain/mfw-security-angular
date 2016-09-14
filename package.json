@@ -40,6 +40,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
+    "postinstall": "npm run bower",
+    "bower": "node_modules/.bin/bower install",
     "lint": "node_modules/.bin/grunt lint",
     "build": "node_modules/.bin/grunt build",
     "docs": "node_modules/.bin/grunt docs",
