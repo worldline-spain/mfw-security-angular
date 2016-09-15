@@ -133,53 +133,18 @@
    * @description
    * Provider for {@link mfw.security.service:$mfwSecurity `$mfwSecurity`}
    */
-  SecurityModule.provider('$mfwSecurity', securityProvider);
-  securityProvider.$inject = [];
-  function securityProvider() {
-    var users = {};
-
+  SecurityModule.provider('$mfwSecurity', SecurityProvider);
+  SecurityProvider.$inject = [];
+  function SecurityProvider() {
     /**
      * @type {UserInfo}
      * @description
      * Current logged user, if any.
      */
-    var currentUser = undefined;
-
-    this.addStaticUser = addStaticUser;
-    this.addStaticUsers = addStaticUsers;
-
-    /**
-     * @ngdoc function
-     * @name mfw.security.$mfwSecurityProvider#addStaticUser
-     * @methodOf mfw.security.$mfwSecurityProvider
-     *
-     * @description
-     * Registers an static user.
-     *
-     * @param {UserInfo} user User
-     */
-    function addStaticUser(user) {
-      users[user.id] = user;
-    }
-
-    /**
-     * @ngdoc function
-     * @name mfw.security.$mfwSecurityProvider#addStaticUsers
-     * @methodOf mfw.security.$mfwSecurityProvider
-     *
-     * @description
-     * Registers a set of static users.
-     *
-     * @param {UserInfo[]|Object.<String,UserInfo>} users User
-     */
-    function addStaticUsers(users) {
-      if (angular.isObject(users)) {
-        users = [users];
-      }
-      angular.forEach(users)
-    }
+    var currentUser;
 
     this.$get = ['$q', '$log', '$timeout', '$rootScope', '$mfwSecurityConfig', '$injector', function ($q, $log, $timeout, $rootScope, $mfwSecurityConfig, $injector) {
+      /*jshint validthis:true */
       var storage = $injector.get($mfwSecurityConfig.storage || '$mfwSecurityStorageDummy'),
         parser = $injector.get($mfwSecurityConfig.userInfoParser || '$mfwSecurityParserIdentity');
 
@@ -242,9 +207,6 @@
        * @param {UserInfo} userInfo Full user info or stored user credentials.
        */
       function _activate(userInfo) {
-        //_validateCredentials(userInfo)
-        //  .then(validCredentials, invalidCredentials);
-
         // Do not validate
         validCredentials(true);
 
@@ -459,21 +421,6 @@
         }
 
         return result;
-      }
-
-      /**
-       *
-       * @param {UserInfo} credentials
-       * @returns {Promise.<Boolean>}
-       * @private
-       */
-      function _validateCredentials(credentials) {
-        var defer = $q.defer();
-        $timeout(function () {
-          //TODO: implement
-          defer.resolve(true);
-        });
-        return defer.promise;
       }
 
       /**

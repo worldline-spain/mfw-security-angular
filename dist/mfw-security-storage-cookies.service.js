@@ -52,8 +52,8 @@
    * @description
    * Provider for {@link mfw.security.storage.cookies.service:$mfwSecurityStorageCookie `$mfwSecurityStorageCookie`}
    */
-  StorageCookieModule.provider('$mfwSecurityStorageCookie', storageCookieProvider);
-  function storageCookieProvider() {
+  StorageCookieModule.provider('$mfwSecurityStorageCookie', StorageCookieProvider);
+  function StorageCookieProvider() {
 
     /**
      * @ngdoc service

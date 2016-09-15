@@ -19,7 +19,7 @@ NG_DOCS={
       "type": "service",
       "moduleName": "mfw.security",
       "shortDescription": "Provider for $mfwSecurity",
-      "keywords": "$mfwsecurity $mfwsecurityprovider addstaticuser addstaticusers api function mfw provider registers security service set static user userinfo users"
+      "keywords": "$mfwsecurity $mfwsecurityprovider api mfw provider security service"
     },
     {
       "section": "api",

@@ -60,8 +60,8 @@
   });
 
 
-  HttpHandlerModule.provider('$mfwSecurityHttpHandler', httpHandlerProvider);
-  function httpHandlerProvider() {
+  HttpHandlerModule.provider('$mfwSecurityHttpHandler', HttpHandlerProvider);
+  function HttpHandlerProvider() {
     this.$get = ['$injector', '$rootScope', '$log', '$mfwSecurity', '$mfwSecurityHttpHandlerConfig', '$mfwSecurityConfig', function ($injector, $rootScope, $log, $mfwSecurity, $mfwSecurityHttpHandlerConfig, $mfwSecurityConfig) {
       var restangularServices = [];
 
