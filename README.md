@@ -1,4 +1,4 @@
-# MFW Client Security v1.0.0
+# MFW Client Security v1.0.1
 
 This AngularJS module provides a security layer to applications as part of **Mobile FrameWork (MFW)**.
 
@@ -7,7 +7,7 @@ This AngularJS module provides a security layer to applications as part of **Mob
 
 ### Route interceptor
 
-Provided implementation is based on UI Router.
+Provided implementation is based on [UI Router](https://github.com/angular-ui/ui-router).
 
 * Configure your states with required credentials (from your own role list) and the route interceptor will
 handle them and allow or deny access to them.
@@ -16,7 +16,7 @@ handle them and allow or deny access to them.
 
 ### HTTP requests interceptor
 
-Provided implementation is based on Restangular.
+Provided implementation is based on [Restangular](https://github.com/mgonto/restangular).
 
 * Configure all your Restangular configurations to be updated with proper credentials when user logs in or logs out.
 * Handle error responses to broadcast a logout when `Unauthorized` response (HTTP status code 401) is received.
@@ -32,7 +32,7 @@ Provided implementation is based on Restangular.
 
 ### Via Bower
 
-Use repository URL and version tag until module is published in a Bower registry.
+Get module from Bower registry.
 
 ```shell
 $ bower install --save mfw-security-angular
@@ -51,7 +51,9 @@ Once dependency has been downloaded, configure your application module(s) to req
 
 * `mfw.security` module: `$mfwSecurity` service and directives.
 * `mfw.security.storage.cookies` module: store credentials in cookies (depends on `ngCookies`).
+* `mfw.security.storage.localstorage` module: store credentials in `localStorage`.
 * `mfw.security.user-parser.jwt` module: parse JSON Web Tokens (JWT) after a successful login to a RESTful endpoint (depends on `angular-jwt`).
+* `mfw.security.user-parser.identity` module: dummy parser that performs the identity logic: returns what it receives to parse.
 * `mfw.security.route-interceptor.uirouter` module (optional): configure `ui.router` states for required credentials (depends on `ui.router`).
 * `mfw.security.http-handler.restangular` module (optional): configure `Restangular` with authorization HTTP headers and error interceptors (depends on `restangular`).
 
@@ -96,34 +98,43 @@ and update `$mfwSecurityConfig` constant object to use them in configuration pha
 ## Development
 
 * Use Gitflow
-* Update both package.json and bower.json versions
-* Tag Git with same version numbers as NPM and Bower versions
+* Update package.json version
+* Tag Git with same version numbers as NPM
 * Check for valid `ngDocs` output inside `docs/` folder
 
 > **Important**: Run `npm install` before anything. This will install NPM and Bower dependencies.
 
 > **Important**: Run `npm run deliver` before committing anything. This will build documentation and distribution files.
-> It's a shortcut for running both `docs` and `build` scritps.
+> It's a shortcut for running both `docs` and `build` scripts.
 
 ### NPM commands
 
 * Bower: install Bower dependencies in `bower_components/` folder:
+
 ```shell
 $ npm run bower
 ```
+
 * Build: build distributable binaries in `dist/` folder:
+
 ```shell
 $ npm run build
 ```
+
 * Documentation: generate user documentation (using `ngDocs`):
+
 ```shell
 $ npm run docs
 ```
+
 * Linting: run *linter* (currently JSHint):
+
 ```shell
 $ npm run lint
 ```
+
 * Deliver: **run it before committing to Git**. It's a shortcut for `docs` and `build` scripts:
+
 ```shell
 $ npm run deliver
 ```

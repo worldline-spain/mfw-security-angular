@@ -24,6 +24,7 @@
   "maxdepth": 4,
   "maxcomplexity": 10,
   "globals": {
-    "angular": false
+    "angular": false,
+    "_": false
   }
 }

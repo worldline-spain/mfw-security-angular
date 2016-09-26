@@ -33,7 +33,7 @@
             return $mfwSecurity.isLogged() && $mfwSecurity.hasAnyPermission(permissions);
           };
           fn(scope);
-        }
+        };
       }
     };
   }
@@ -68,7 +68,7 @@
             return $mfwSecurity.isLogged() && $mfwSecurity.hasAllPermissions(permissions);
           };
           fn(scope);
-        }
+        };
       }
     };
   }
@@ -100,7 +100,7 @@
             return $mfwSecurity.isLogged();
           };
           fn(scope);
-        }
+        };
       }
     };
   }
@@ -132,7 +132,7 @@
             return $mfwSecurity.isLogged();
           };
           fn(scope);
-        }
+        };
       }
     };
   }

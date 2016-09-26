@@ -19,7 +19,7 @@
    * Update settings in {@link mfw.security.storage.localstorage.constant:$mfwSecurityStorageLocalStorageConfig `$mfwSecurityStorageLocalStorageConfig`} constant object.
    */
   var StorageLocalStorageModule = angular.module('mfw.security.storage.localstorage', [
-    'mfw.security',
+    'mfw.security'
   ]);
 
   /**
@@ -29,8 +29,8 @@
    * @description
    * Provider for {@link mfw.security.storage.localstorage.service:$mfwSecurityStorageLocalStorage `$mfwSecurityStorageLocalStorage`}
    */
-  StorageLocalStorageModule.provider('$mfwSecurityStorageLocalStorage', storageLocalStorageProvider);
-  function storageLocalStorageProvider() {
+  StorageLocalStorageModule.provider('$mfwSecurityStorageLocalStorage', StorageLocalStorageProvider);
+  function StorageLocalStorageProvider() {
 
     /**
      * @ngdoc service
@@ -42,7 +42,6 @@
     this.$get = function () {
 
       var localStorage = window.localStorage;
-      var userValueNames = [];
       var service = {
         'get': _get,
         'set': _set,
@@ -95,37 +94,6 @@
       function _clear() {
         localStorage.removeItem('userInfo');
       }
-
-      /**
-       * @description
-       * Local storage value getter/setter.
-       *
-       * @param {String} name Name of value in Local Storage.
-       * @param {String=} value New value, optional.
-       * @returns {String} Local Storage value.
-       * @private
-       */
-      function _localStorageValue(name, value) {
-        var userInfo = _get();
-        if (value) {
-          userInfo[name] = value;
-          _set(userInfo);
-        }
-        return userInfo[name];
-      }
-
-      /**
-       * @description
-       * Removes a value in Local storage.
-       *
-       * @param {String} name Name of value in Local Storage.
-       * @private
-       */
-      function _removeLocalStorageValue(name) {
-        var userInfo = _get();
-        delete userInfo[name];
-      }
     };
-
   }
 })();
