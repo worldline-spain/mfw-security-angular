@@ -28,7 +28,7 @@ NG_DOCS={
       "type": "object",
       "moduleName": "mfw.security",
       "shortDescription": "Configuration object for $mfwSecurity service.",
-      "keywords": "$mfwsecurity $mfwsecuritylogin $mfwsecuritylogout $mfwsecurityparserjwt $mfwsecuritystoragecookie $mfwsecurityupdatecredentials api broadcast configuration constant credentials current currentusergetter default event event_login event_logout event_update_credentials getter heartbeat heartbeatinterval interval login logout mfw millis object parsing property security service storage update user userinfoparser"
+      "keywords": "$mfwsecurity $mfwsecuritylogin $mfwsecuritylogout $mfwsecurityparserjwt $mfwsecuritystoragecookie $mfwsecurityupdatecredentials api broadcast configuration constant credentials current currentusergetter default event event_login event_logout event_update_credentials getter heartbeat heartbeatinterval implementing info interval login logout methods_me mfw millis object parsing property return security service storage update user userinfoparser valid"
     },
     {
       "section": "api",
@@ -136,7 +136,7 @@ NG_DOCS={
       "type": "service",
       "moduleName": "mfw.security",
       "shortDescription": "Authorization service.",
-      "keywords": "$mfwsecurityconfig $mfwsecuritylogin $mfwsecuritylogout access accesstoken activate api authorization cache called check checks clear clears configures constant credentials current currently event events_ full function hasallpermissions hasanypermission info init initializer islogged load loaded logged login logout method mfw module order parsed parser permissions previous refreshaccesstoken security service session stored token trigger triggers user userinfo userinfoparser valid"
+      "keywords": "$mfwsecurityconfig $mfwsecuritylogin $mfwsecuritylogout access accesstoken activate api authorization cache called check checks clear clears configures constant credentials current currently entity event events_ full function granted hasallpermissions hasanypermission identifier info init initializer islogged load loaded logged login logout method methods_me mfw module order parsed parser permissions previous property refreshaccesstoken refreshtoken roles security service session stored string structure token trigger triggers user userinfo userinfoparser username valid"
     },
     {
       "section": "api",

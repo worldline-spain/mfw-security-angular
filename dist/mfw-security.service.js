@@ -93,7 +93,11 @@
      * @name mfw.security.constant:$mfwSecurityConfig#userInfoParser
      * @propertyOf mfw.security.constant:$mfwSecurityConfig
      * @description
-     * Default value: `$mfwSecurityParserJWT`
+     * Default value: `$mfwSecurityParserJWT`.
+     *
+     * Service implementing user info parsing must return a valid
+     * {@link mfw.security.service:$mfwSecurity#methods_me user info} object.
+     *
      * @returns {String} Service name for user information parsing.
      */
     userInfoParser: '$mfwSecurityParserJWT',
@@ -204,7 +208,7 @@
        *
        * It checks for stored user credentials in order to activate a previous session.
        *
-       * @param {UserInfo} userInfo Full user info or stored user credentials.
+       * @param {UserInfo} userInfo Full {@link mfw.security.service:$mfwSecurity#methods_me user info} or stored user credentials.
        */
       function _activate(userInfo) {
         // Do not validate
@@ -271,6 +275,15 @@
        * @ngdoc function
        * @name mfw.security.service:$mfwSecurity#me
        * @methodOf mfw.security.service:$mfwSecurity
+       *
+       * @description
+       *
+       * `UserInfo` entity has the following structure:
+       *
+       * * property `id` (`String`): User identifier
+       * * property `accessToken` (`String`): Current session token
+       * * property `refreshToken` (`String`): Username
+       * * property `permissions` (`String[]`): User granted roles
        *
        * @returns {UserInfo} Current logged user
        */
@@ -339,7 +352,7 @@
        * @returns {boolean} Whether user has at least one of the specified permissions.
        */
       function _hasAny(permissions) {
-        $log.debug('Checkin ANY permission from', permissions);
+        //$log.debug('Checkin ANY permission from', permissions);
         var normalized = _normalizePermission(permissions);
         var userPermissions = _permissions();
         var has = normalized.filter(_userHasPermission);
@@ -354,7 +367,7 @@
        * @param {String} accessToken New access token
        */
       function _refreshAccessToken(accessToken) {
-        $log.debug('refreshAccessToken');
+        //$log.debug('refreshAccessToken');
 
         if (angular.isUndefined(currentUser)) {
           throw new Error('Not logged user.');
@@ -375,7 +388,7 @@
        * @returns {boolean} Whether user has all the specified permissions.
        */
       function _hasAll(permissions) {
-        $log.debug('Checkin ALL permission from', permissions);
+        //$log.debug('Checkin ALL permission from', permissions);
         var normalized = _normalizePermission(permissions);
         var userPermissions = _permissions();
         var has = normalized.filter(_userHasPermission);
@@ -415,9 +428,9 @@
         var result = negate ? !has : has;
 
         if (negate) {
-          $log.debug('User has not permission', perm, '?', result);
+          //$log.debug('User has not permission', perm, '?', result);
         } else {
-          $log.debug('User has permission', permission, '?', result);
+          //$log.debug('User has permission', permission, '?', result);
         }
 
         return result;
