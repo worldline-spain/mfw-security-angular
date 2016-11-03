@@ -352,7 +352,7 @@
        * @returns {boolean} Whether user has at least one of the specified permissions.
        */
       function _hasAny(permissions) {
-        $log.debug('Checkin ANY permission from', permissions);
+        //$log.debug('Checkin ANY permission from', permissions);
         var normalized = _normalizePermission(permissions);
         var userPermissions = _permissions();
         var has = normalized.filter(_userHasPermission);
@@ -367,7 +367,7 @@
        * @param {String} accessToken New access token
        */
       function _refreshAccessToken(accessToken) {
-        $log.debug('refreshAccessToken');
+        //$log.debug('refreshAccessToken');
 
         if (angular.isUndefined(currentUser)) {
           throw new Error('Not logged user.');
@@ -388,7 +388,7 @@
        * @returns {boolean} Whether user has all the specified permissions.
        */
       function _hasAll(permissions) {
-        $log.debug('Checkin ALL permission from', permissions);
+        //$log.debug('Checkin ALL permission from', permissions);
         var normalized = _normalizePermission(permissions);
         var userPermissions = _permissions();
         var has = normalized.filter(_userHasPermission);
@@ -428,9 +428,9 @@
         var result = negate ? !has : has;
 
         if (negate) {
-          $log.debug('User has not permission', perm, '?', result);
+          //$log.debug('User has not permission', perm, '?', result);
         } else {
-          $log.debug('User has permission', permission, '?', result);
+          //$log.debug('User has permission', permission, '?', result);
         }
 
         return result;
