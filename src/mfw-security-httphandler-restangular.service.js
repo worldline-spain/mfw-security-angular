@@ -180,11 +180,13 @@
        * @private
        */
       function _addCredentialsToRestangular(userInfo) {
-        angular.forEach(restangularServices, function (restangular) {
-          var defaultHeaders = angular.copy(restangular.defaultHeaders) || {};
-          defaultHeaders['Authorization'] = userInfo.accessToken;
-          restangular.setDefaultHeaders(defaultHeaders);
-        });
+        if (userInfo) {
+          angular.forEach(restangularServices, function (restangular) {
+            var defaultHeaders = angular.copy(restangular.defaultHeaders) || {};
+            defaultHeaders['Authorization'] = userInfo.accessToken;
+            restangular.setDefaultHeaders(defaultHeaders);
+          });
+        }
       }
 
       /**
