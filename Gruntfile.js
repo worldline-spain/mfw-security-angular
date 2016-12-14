@@ -51,6 +51,7 @@ module.exports = function (grunt) {
           'dist/mfw-security-session.store.min.js': 'src/mfw-security-session.store.js',
           'dist/mfw-security-storage-cookies.service.min.js': 'src/mfw-security-storage-cookies.service.js',
           'dist/mfw-security-storage-localstorage.service.min.js': 'src/mfw-security-storage-localstorage.service.js',
+          'dist/mfw-security-storage-volatile-memory.service.min.js': 'src/mfw-security-storage-volatile-memory.service.js',
           'dist/mfw-security-userparser-jwt.service.min.js': 'src/mfw-security-userparser-jwt.service.js',
           'dist/mfw-security-userparser-identity.service.min.js': 'src/mfw-security-userparser-identity.service.js'
         }
