@@ -247,7 +247,7 @@
         //if (angular.isDefined(currentUser)) {
         //  throw new Error('Already logged user.');
         //}
-        var userInfo = parser.parse(user);
+        var userInfo = parser.parse(user) || user;
         storage.set(userInfo);
         this.activate(userInfo);
       }

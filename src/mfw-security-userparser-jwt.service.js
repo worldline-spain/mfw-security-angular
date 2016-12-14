@@ -61,14 +61,16 @@
      * @returns {UserInfo} Parsed user
      */
     function parse(user) {
-      var accessToken = user.token_type + ' ' + user.access_token;
-      var refreshToken = user.refresh_token;
-      var userInfo = {
-        accessToken: accessToken,
-        refreshToken: refreshToken
-      };
-      _fillDataFromToken(userInfo);
-      return userInfo;
+      if (user && user.access_token) {
+        var accessToken = user.token_type + ' ' + user.access_token;
+        var refreshToken = user.refresh_token;
+        var userInfo = {
+          accessToken: accessToken,
+          refreshToken: refreshToken
+        };
+        _fillDataFromToken(userInfo);
+        return userInfo;
+      }
     }
 
     /**

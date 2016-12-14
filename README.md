@@ -52,6 +52,7 @@ Once dependency has been downloaded, configure your application module(s) to req
 * `mfw.security` module: `$mfwSecurity` service and directives.
 * `mfw.security.storage.cookies` module: store credentials in cookies (depends on `ngCookies`).
 * `mfw.security.storage.localstorage` module: store credentials in `localStorage`.
+* `mfw.security.storage.volatile-memory` module: store credentials in volatile memory.
 * `mfw.security.user-parser.jwt` module: parse JSON Web Tokens (JWT) after a successful login to a RESTful endpoint (depends on `angular-jwt`).
 * `mfw.security.user-parser.identity` module: dummy parser that performs the identity logic: returns what it receives to parse.
 * `mfw.security.route-interceptor.uirouter` module (optional): configure `ui.router` states for required credentials (depends on `ui.router`).
