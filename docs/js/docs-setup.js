@@ -248,6 +248,33 @@ NG_DOCS={
     },
     {
       "section": "api",
+      "id": "mfw.security.storage.volatile-memory",
+      "shortName": "mfw.security.storage.volatile-memory",
+      "type": "overview",
+      "moduleName": "mfw.security.storage.volatile-memory",
+      "shortDescription": "Description",
+      "keywords": "$mfwsecuritystoragevolatilememoryconfig api configuration constant credentials description memory mfw object overview recover reloading security session settings status storage store update user volatile-memory"
+    },
+    {
+      "section": "api",
+      "id": "mfw.security.storage.volatile-memory.$mfwSecurityStorageVolatileMemoryProvider",
+      "shortName": "mfw.security.storage.volatile-memory.$mfwSecurityStorageVolatileMemoryProvider",
+      "type": "service",
+      "moduleName": "mfw.security.storage.volatile-memory",
+      "shortDescription": "Provider for $mfwSecurityStorageVolatileMemory",
+      "keywords": "$mfwsecuritystoragevolatilememory $mfwsecuritystoragevolatilememoryprovider api mfw provider security service storage volatile-memory"
+    },
+    {
+      "section": "api",
+      "id": "mfw.security.storage.volatile-memory.service:$mfwSecurityStorageVolatileMemory",
+      "shortName": "$mfwSecurityStorageVolatileMemory",
+      "type": "service",
+      "moduleName": "mfw.security.storage.volatile-memory",
+      "shortDescription": "Implementation of security storage based on volatile memory.",
+      "keywords": "api based clear clears credentials function getter implementation memory mfw security service set setter storage stored user userinfo volatile volatile-memory"
+    },
+    {
+      "section": "api",
       "id": "mfw.security.user-parser.identity",
       "shortName": "mfw.security.user-parser.identity",
       "type": "overview",
