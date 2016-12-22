@@ -359,6 +359,7 @@
 
         function stopTransition() {
           ev.preventDefault();
+          saveStoppedTransition(toState, toParams);
         }
       }
 
@@ -377,13 +378,17 @@
           $log.error('State change due to 401 server response. Perform logout.');
 
           if ($mfwSecurityRouteInterceptorConfig.forwardToRestrictedStateAfterLogin === true) {
-            // Save state
-            stoppedTransition = to;
-            stoppedTransitionParameters = toP;
+            saveStoppedTransition(to, toP);
           }
 
           _doLogout();
         }
+      }
+
+      function saveStoppedTransition(toState, toParams) {
+        // Save state
+        stoppedTransition = angular.isString(toState)? toState : toState.name;
+        stoppedTransitionParameters = toParams;
       }
 
       /**
@@ -393,7 +398,7 @@
       function _loginEventHandler() {
         if (stoppedTransition) {
           if ($mfwSecurityRouteInterceptorConfig.forwardToRestrictedStateAfterLogin === true) {
-            $log.log('Redirecting to login state after logout.');
+            $log.log('Redirecting to restricted state after login:', stoppedTransition);
             _transitionTo(stoppedTransition, stoppedTransitionParameters);
           } else {
             transitionToDefault();
