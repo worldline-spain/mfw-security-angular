@@ -270,7 +270,8 @@
        * authentication and authorization logic.
        */
       var service = {
-        init: _init
+        init: _init,
+        currentStoppedTransition: _hasStoppedTransition
       };
       return service;
 
@@ -295,10 +296,28 @@
         // UI Route events
         $rootScope.$on('$stateChangeStart', _stateChangeStartHandler);
         $rootScope.$on('$stateChangeError', _stateChangeErrorHandler);
+        $rootScope.$on('$stateChangeSuccess', removeStoppedTransition);
 
         // Security events
         $rootScope.$on($mfwSecurityConfig.EVENT_LOGIN, _loginEventHandler);
         $rootScope.$on($mfwSecurityConfig.EVENT_LOGOUT, _logoutEventHandler);
+      }
+
+      /**
+       * @ngdoc method
+       * @name mfw.security.route-interceptor.uirouter.service:$mfwSecurityRouteInterceptor#currentStoppedTransition
+       * @methodOf mfw.security.route-interceptor.uirouter.service:$mfwSecurityRouteInterceptor
+       *
+       * @description
+       * Method that informs whether a restricted transition has been stopped.
+       *
+       * @return {String[]} Name of the restricted state accessed without enough permissions (first element
+       *      in the array) and the state parameters (second element in the array).
+       */
+      function _hasStoppedTransition() {
+        if (angular.isDefined(stoppedTransition)) {
+          return [stoppedTransition, stoppedTransitionParameters];
+        }
       }
 
       /**
@@ -387,8 +406,13 @@
 
       function saveStoppedTransition(toState, toParams) {
         // Save state
-        stoppedTransition = angular.isString(toState)? toState : toState.name;
+        stoppedTransition = angular.isString(toState) ? toState : toState.name;
         stoppedTransitionParameters = toParams;
+      }
+
+      function removeStoppedTransition() {
+        stoppedTransition = undefined;
+        stoppedTransitionParameters = undefined;
       }
 
       /**

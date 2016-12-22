@@ -127,7 +127,7 @@ NG_DOCS={
       "type": "service",
       "moduleName": "mfw.security.route-interceptor.uirouter",
       "shortDescription": "Service that listens to UI Router events ($stateChangeStart and $stateChangeError) to implement",
-      "keywords": "$mfwsecurity $statechangeerror $statechangestart api authentication authorization called events implement init initializer listens loaded logic method mfw module register route-interceptor router security service ui uirouter"
+      "keywords": "$mfwsecurity $statechangeerror $statechangestart accessed api array authentication authorization called currentstoppedtransition element events implement informs init initializer listens loaded logic method mfw module parameters permissions register restricted route-interceptor router security service stopped transition ui uirouter"
     },
     {
       "section": "api",
