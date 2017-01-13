@@ -32,7 +32,6 @@
    * RUN section
    */
   SecurityModule.run(['$mfwSecurity', function ($mfwSecurity) {
-    $mfwSecurity.init();
   }]);
 
 
@@ -152,6 +151,8 @@
       var storage = $injector.get($mfwSecurityConfig.storage || '$mfwSecurityStorageDummy'),
         parser = $injector.get($mfwSecurityConfig.userInfoParser || '$mfwSecurityParserIdentity');
 
+      var initialized = false;
+
       /**
        * @ngdoc service
        * @name mfw.security.service:$mfwSecurity
@@ -161,6 +162,7 @@
        */
       var $mfwSecurity = {
         init: _init,
+        isInitialized: _isInitialized,
         activate: _activate,
         logged: _logged,
         logout: _logout,
@@ -171,6 +173,8 @@
         hasAnyPermission: _hasAny,
         hasAllPermissions: _hasAll
       };
+
+      $mfwSecurity.init();
       return $mfwSecurity;
 
       //////////////////////
@@ -186,12 +190,23 @@
        * It checks for stored user credentials in order to activate a previous session.
        */
       function _init() {
+        var that = this;
         var storedInfo = storage.get();
-        if (angular.isDefined(storedInfo)) {
-          $log.log('Loading stored user information:', storedInfo);
-          var userInfo = parser.fromStorage(storedInfo);
-          this.activate(userInfo);
-        }
+        return $q.when(storedInfo)
+          .then(function (storedCredencials) {
+            if (angular.isDefined(storedCredencials)) {
+              $log.log('Loading stored user information:', storedCredencials);
+              var userInfo = parser.fromStorage(storedCredencials);
+              that.activate(userInfo);
+              initialized = true;
+            }
+          }, function () {
+            initialized = true;
+          });
+      }
+
+      function _isInitialized() {
+        return initialized;
       }
 
       /**
@@ -218,9 +233,11 @@
           $log.log('Stored credentials are still valid.');
           if (result === true) {
             currentUser = userInfo;
-            _notifyLogin(currentUser);
+            $timeout(function () {
+              _notifyLogin(currentUser);
+            });
           } else {
-            invalidCredentials();
+            $timeout(invalidCredentials);
           }
         }
 

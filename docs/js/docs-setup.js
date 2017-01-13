@@ -248,6 +248,33 @@ NG_DOCS={
     },
     {
       "section": "api",
+      "id": "mfw.security.storage.secured-cookies",
+      "shortName": "mfw.security.storage.secured-cookies",
+      "type": "overview",
+      "moduleName": "mfw.security.storage.secured-cookies",
+      "shortDescription": "Description",
+      "keywords": "$mfwsecuritystoragesecuredcookiesconfig accessible api configuration constant cookies credentials description javascript mfw object overview secured secured-cookies security settings storage store update user"
+    },
+    {
+      "section": "api",
+      "id": "mfw.security.storage.secured-cookies.$mfwSecurityStorageSecuredCookiesProvider",
+      "shortName": "mfw.security.storage.secured-cookies.$mfwSecurityStorageSecuredCookiesProvider",
+      "type": "service",
+      "moduleName": "mfw.security.storage.secured-cookies",
+      "shortDescription": "Provider for $mfwSecurityStorageSecuredCookies",
+      "keywords": "$mfwsecuritystoragesecuredcookies $mfwsecuritystoragesecuredcookiesprovider api mfw provider secured-cookies security service storage"
+    },
+    {
+      "section": "api",
+      "id": "mfw.security.storage.secured-cookies.service:$mfwSecurityStorageSecuredCookies",
+      "shortName": "$mfwSecurityStorageSecuredCookies",
+      "type": "service",
+      "moduleName": "mfw.security.storage.secured-cookies",
+      "shortDescription": "Implementation of security storage based on volatile memory.",
+      "keywords": "api based clear clears credentials function getter implementation memory mfw secured-cookies security service set setter storage stored user userinfo volatile"
+    },
+    {
+      "section": "api",
       "id": "mfw.security.storage.volatile-memory",
       "shortName": "mfw.security.storage.volatile-memory",
       "type": "overview",

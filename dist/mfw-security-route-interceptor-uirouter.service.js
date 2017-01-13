@@ -347,8 +347,13 @@
        * @private
        */
       function _stateChangeStartHandler(ev, toState, toParams) {
+        var isInitialized = $mfwSecurity.isInitialized();
         var loggedIn = $mfwSecurity.isLogged();
-        if (_isLoginState(toState) && loggedIn && $mfwSecurityRouteInterceptorConfig.avoidLoginStateWhenLoggedIn === true) {
+        if (!isInitialized) {
+          // Stop current transition
+          $log.info('Stopping transition because $mfwSecurity is not initialized yet');
+          stopTransition();
+        } else if (_isLoginState(toState) && loggedIn && $mfwSecurityRouteInterceptorConfig.avoidLoginStateWhenLoggedIn === true) {
           if (DEFAULT_STATE) {
             // Stop current transition
             $log.debug('Stopping transition to login state as user is already logged in. Will be redirected to default state', DEFAULT_STATE);
