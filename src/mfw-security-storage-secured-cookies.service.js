@@ -36,8 +36,18 @@
     };
 
     /**
+     * @ngdoc service
+     * @name mfw.security.storage.secured-cookies.$mfwSecurityStorageSecuredCookiesProvider#config
+     * @methodOf mfw.security.storage.secured-cookies.$mfwSecurityStorageSecuredCookiesProvider
      *
-     * @param opts
+     * @description
+     * Configures service.
+     *
+     * @param {Object} opts Options
+     * @param {Function|Array.<string|function()>} opts.sessionRetriever Injectable function that invokes server to validate
+     *      current credentials.
+     *
+     *      This function must return a promise.
      */
     this.config = function (opts) {
       angular.extend(options, opts || {});
@@ -48,7 +58,9 @@
      * @name mfw.security.storage.secured-cookies.service:$mfwSecurityStorageSecuredCookies
      *
      * @description
-     * Implementation of security storage based on volatile memory.
+     * Implementation of security storage based on volatile memory and secured cookies.
+     *
+     * Secured cookies are not accessible in Javascript, so its storage programatically is dummy, it stores nothing.
      */
     this.$get = ['$injector', function ($injector) {
 
@@ -70,7 +82,7 @@
        * @description
        * Information getter.
        *
-       * @returns {UserInfo} Stored credentials information, if any.
+       * @returns {UserInfo|Promise.<UserInfo>} Stored credentials information, if any.
        */
       function _get() {
         if (storage.userInfo) {
