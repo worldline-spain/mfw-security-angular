@@ -82,7 +82,9 @@
      * @returns {UserInfo} User information
      */
     function fromStorage(userInfo) {
-      _fillDataFromToken(userInfo);
+      if (userInfo && userInfo.accessToken) {
+        _fillDataFromToken(userInfo);
+      }
       return userInfo;
     }
 
