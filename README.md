@@ -1,4 +1,4 @@
-# MFW Client Security v1.0.6
+# MFW Client Security v1.0.7
 
 This AngularJS module provides a security layer to applications as part of **Mobile FrameWork (MFW)**.
 
@@ -51,6 +51,7 @@ Once dependency has been downloaded, configure your application module(s) to req
 
 * `mfw.security` module: `$mfwSecurity` service and directives.
 * `mfw.security.storage.cookies` module: store credentials in cookies (depends on `ngCookies`).
+* `mfw.security.storage.secured-cookies` module: store credentials using secured cookies (volatile in memory, invokes server to validate cookies' validity).
 * `mfw.security.storage.localstorage` module: store credentials in `localStorage`.
 * `mfw.security.storage.volatile-memory` module: store credentials in volatile memory.
 * `mfw.security.user-parser.jwt` module: parse JSON Web Tokens (JWT) after a successful login to a RESTful endpoint (depends on `angular-jwt`).

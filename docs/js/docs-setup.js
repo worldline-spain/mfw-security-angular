@@ -262,7 +262,7 @@ NG_DOCS={
       "type": "service",
       "moduleName": "mfw.security.storage.secured-cookies",
       "shortDescription": "Provider for $mfwSecurityStorageSecuredCookies",
-      "keywords": "$mfwsecuritystoragesecuredcookies $mfwsecuritystoragesecuredcookiesprovider api mfw provider secured-cookies security service storage"
+      "keywords": "$mfwsecuritystoragesecuredcookies $mfwsecuritystoragesecuredcookiesprovider api config configures credentials current function injectable invokes mfw options opts promise provider return secured-cookies security server service sessionretriever storage validate"
     },
     {
       "section": "api",
@@ -270,8 +270,8 @@ NG_DOCS={
       "shortName": "$mfwSecurityStorageSecuredCookies",
       "type": "service",
       "moduleName": "mfw.security.storage.secured-cookies",
-      "shortDescription": "Implementation of security storage based on volatile memory.",
-      "keywords": "api based clear clears credentials function getter implementation memory mfw secured-cookies security service set setter storage stored user userinfo volatile"
+      "shortDescription": "Implementation of security storage based on volatile memory and secured cookies.",
+      "keywords": "accessible api based clear clears cookies credentials dummy function getter implementation javascript memory mfw programatically secured secured-cookies security service set setter storage stored stores user userinfo volatile"
     },
     {
       "section": "api",
