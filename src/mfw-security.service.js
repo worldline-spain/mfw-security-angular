@@ -198,7 +198,6 @@
               $log.log('Loading stored user information:', storedCredencials);
               var userInfo = parser.fromStorage(storedCredencials);
               that.activate(userInfo);
-              initialized = true;
             }
           }, function () {
             initialized = true;
@@ -239,6 +238,7 @@
           } else {
             $timeout(invalidCredentials);
           }
+          initialized = true;
         }
 
         function invalidCredentials() {

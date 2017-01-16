@@ -253,7 +253,7 @@ NG_DOCS={
       "type": "overview",
       "moduleName": "mfw.security.storage.secured-cookies",
       "shortDescription": "Description",
-      "keywords": "$mfwsecuritystoragesecuredcookiesconfig accessible api configuration constant cookies credentials description javascript mfw object overview secured secured-cookies security settings storage store update user"
+      "keywords": "$mfwsecuritystoragesecuredcookiesprovider accessible api config configuration cookies credentials description javascript method methods_config mfw overview secured secured-cookies security settings storage store update user"
     },
     {
       "section": "api",

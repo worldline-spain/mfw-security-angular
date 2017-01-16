@@ -16,7 +16,7 @@
    *
    * # Configuration
    *
-   * Update settings in {@link mfw.security.storage.secured-cookies.constant:$mfwSecurityStorageSecuredCookiesConfig `$mfwSecurityStorageSecuredCookiesConfig`} constant object.
+   * Update settings in {@link mfw.security.storage.secured-cookies.$mfwSecurityStorageSecuredCookiesProvider#methods_config `$mfwSecurityStorageSecuredCookiesProvider.config()`} method.
    */
   var StorageSecuredCookiesModule = angular.module('mfw.security.storage.secured-cookies', [
     'mfw.security'
