@@ -296,7 +296,7 @@
         // UI Route events
         $rootScope.$on('$stateChangeStart', _stateChangeStartHandler);
         $rootScope.$on('$stateChangeError', _stateChangeErrorHandler);
-        $rootScope.$on('$stateChangeSuccess', removeStoppedTransition);
+        $rootScope.$on('$stateChangeSuccess', _stateChangeSuccessHandler);
 
         // Security events
         $rootScope.$on($mfwSecurityConfig.EVENT_LOGIN, _loginEventHandler);
@@ -349,11 +349,7 @@
       function _stateChangeStartHandler(ev, toState, toParams) {
         var isInitialized = $mfwSecurity.isInitialized();
         var loggedIn = $mfwSecurity.isLogged();
-        if (!isInitialized) {
-          // Stop current transition
-          $log.info('Stopping transition because $mfwSecurity is not initialized yet');
-          stopTransition();
-        } else if (_isLoginState(toState) && loggedIn && $mfwSecurityRouteInterceptorConfig.avoidLoginStateWhenLoggedIn === true) {
+        if (_isLoginState(toState) && loggedIn && $mfwSecurityRouteInterceptorConfig.avoidLoginStateWhenLoggedIn === true) {
           if (DEFAULT_STATE) {
             // Stop current transition
             $log.debug('Stopping transition to login state as user is already logged in. Will be redirected to default state', DEFAULT_STATE);
@@ -366,6 +362,10 @@
           } else {
             $log.error('Tried to avoid login state for a logged user, but no default state is configured.');
           }
+        } else if (!isInitialized && !(_isLoginState(toState) || _isPublicState(toState))) {
+          // Stop current transition
+          $log.info('Stopping transition to ' + toState.name + ' because $mfwSecurity is not initialized yet');
+          stopTransition();
         } else if (!_hasAccessToState(toState, toParams)) {
           $log.warn('Stopping transition to state', toState.name);
           stopTransition();
@@ -406,6 +406,12 @@
           }
 
           _doLogout();
+        }
+      }
+
+      function _stateChangeSuccessHandler(to, toP) {
+        if (!_isLoginState(to)) {
+          removeStoppedTransition();
         }
       }
 
