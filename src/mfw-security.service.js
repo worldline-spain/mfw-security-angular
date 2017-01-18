@@ -152,6 +152,7 @@
         parser = $injector.get($mfwSecurityConfig.userInfoParser || '$mfwSecurityParserIdentity');
 
       var initialized = false;
+      var initPromise = undefined;
 
       /**
        * @ngdoc service
@@ -163,6 +164,7 @@
       var $mfwSecurity = {
         init: _init,
         isInitialized: _isInitialized,
+        onInitialized: _onInitialized,
         activate: _activate,
         logged: _logged,
         logout: _logout,
@@ -193,7 +195,7 @@
       function _init() {
         var that = this;
         var storedInfo = storage.get();
-        return $q.when(storedInfo)
+        initPromise = $q.when(storedInfo)
           .then(function (storedCredencials) {
             if (angular.isDefined(storedCredencials)) {
               $log.log('Loading stored user information:', storedCredencials);
@@ -203,10 +205,40 @@
           }, function () {
             initialized = true;
           });
+        return initPromise;
       }
 
+      /**
+       * @ngdoc method
+       * @name mfw.security.service:$mfwSecurity#isInitialized
+       * @methodOf mfw.security.service:$mfwSecurity
+       *
+       * @description
+       * Method that returns the initialization status: finished or not.
+       *
+       * @returns {Boolean} Whether the service is already initialized
+       */
       function _isInitialized() {
         return initialized;
+      }
+
+      /**
+       * @ngdoc method
+       * @name mfw.security.service:$mfwSecurity#onInitialized
+       * @methodOf mfw.security.service:$mfwSecurity
+       *
+       * @description
+       * Method that returns the initializing promise.
+       *
+       * @param {Function=} fn Optional callback function to be invoked when initialization is completed.
+       *
+       * @returns {Promise} Initializing promise.
+       */
+      function _onInitialized(fn) {
+        if (angular.isFunction(fn)) {
+          initPromise.then(fn);
+        }
+        return initPromise;
       }
 
       /**
