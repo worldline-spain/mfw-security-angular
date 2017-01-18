@@ -136,7 +136,7 @@ NG_DOCS={
       "type": "service",
       "moduleName": "mfw.security",
       "shortDescription": "Authorization service.",
-      "keywords": "$mfwsecurityconfig $mfwsecuritylogin $mfwsecuritylogout access accesstoken activate api authorization cache called check checks clear clears configures constant credentials current currently entity event events_ full function granted hasallpermissions hasanypermission identifier info init initializer islogged load loaded logged login logout method methods_me mfw module order parsed parser permissions previous property refreshaccesstoken refreshtoken roles security service session stored string structure token trigger triggers user userinfo userinfoparser username valid"
+      "keywords": "$mfwsecurityconfig $mfwsecuritylogin $mfwsecuritylogout access accesstoken activate api authorization cache callback check checks clear clears completed configures constant credentials current currently entity event events_ finished fn full function granted hasallpermissions hasanypermission identifier info initialization initialized initializing invoked isinitialized islogged load logged login logout method methods_me mfw oninitialized optional order parsed parser permissions previous promise property refreshaccesstoken refreshtoken returns roles security service session status stored string structure token trigger triggers user userinfo userinfoparser username valid"
     },
     {
       "section": "api",
