@@ -180,7 +180,8 @@
       //////////////////////
 
       /**
-       * @ngdoc method
+       * @private
+       * ngdoc method
        * @name mfw.security.service:$mfwSecurity#init
        * @methodOf mfw.security.service:$mfwSecurity
        *
@@ -484,12 +485,12 @@
 
       /**
        * @ngdoc event
-       * @name mfw.security.service:$mfwSecurity#$mfwSecurityLogout
+       * @name mfw.security.service:$mfwSecurity#$mfwSecurityUpdateCredentials
        * @eventOf mfw.security.service:$mfwSecurity
        * @eventType broadcast on $rootScope
        *
        * @description
-       * Event triggered when user logs out.
+       * Event triggered when user credentials (roles) are updated.
        */
       function _notifyUpdateCredentials() {
         _broadcast($mfwSecurityConfig.EVENT_UPDATE_CREDENTIALS, currentUser);
