@@ -176,7 +176,9 @@
         hasAllPermissions: _hasAll
       };
 
-      $mfwSecurity.init();
+      $mfwSecurity.init().then(function () {
+        initialized = true;
+      });
       return $mfwSecurity;
 
       //////////////////////

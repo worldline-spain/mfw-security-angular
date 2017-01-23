@@ -366,6 +366,15 @@
           // Stop current transition
           $log.info('Stopping transition to ' + toState.name + ' because $mfwSecurity is not initialized yet');
           stopTransition();
+          $mfwSecurity.onInitialized(function () {
+            if (!$mfwSecurity.isLogged()) {
+              // Could not be logged
+              // Reevaluate state
+              _stateChangeStartHandler(ev, toState, toParams);
+            } else {
+              // Logged: do nothing as it's already handled by _loginEventHandler!
+            }
+          });
         } else if (!_hasAccessToState(toState, toParams)) {
           $log.warn('Stopping transition to state', toState.name);
           stopTransition();
