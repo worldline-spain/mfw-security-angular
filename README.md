@@ -1,4 +1,4 @@
-# MFW Client Security v1.0.9
+# MFW Client Security v1.0.10
 
 This AngularJS module provides a security layer to applications as part of **Mobile FrameWork (MFW)**.
 
